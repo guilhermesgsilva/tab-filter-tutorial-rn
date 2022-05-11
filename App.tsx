@@ -12,8 +12,39 @@ import {
 
 const listTab = [{status: 'All'}, {status: 'Purple'}, {status: 'Green'}];
 
+const data = [
+  {
+    name: 'Ronaldo',
+    status: 'Green',
+  },
+  {
+    name: 'Messi',
+    status: 'Purple',
+  },
+  {
+    name: 'Kaka',
+    status: 'Green',
+  },
+  {
+    name: 'Mabbpe',
+    status: 'Green',
+  },
+  {
+    name: 'Lukaku',
+    status: 'Purple',
+  },
+];
+
 const App = () => {
   const [status, setStatus] = useState('All');
+
+  const renderItem = ({item, index}) => {
+    return (
+      <View key={index} style={styles.itemContainer}>
+        <Text>{item.name}</Text>
+      </View>
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -22,10 +53,21 @@ const App = () => {
           <TouchableOpacity
             style={[styles.btnTab, status === e.status && styles.btnTabActive]}
             onPress={() => setStatus(e.status)}>
-            <Text style={styles.textTab}>{e.status}</Text>
+            <Text
+              style={[
+                styles.textTab,
+                status === e.status && styles.textTabActive,
+              ]}>
+              {e.status}
+            </Text>
           </TouchableOpacity>
         ))}
       </View>
+      <FlatList
+        data={data}
+        keyExtractor={(e, i) => i.toString()}
+        renderItem={renderItem}
+      />
     </SafeAreaView>
   );
 };
@@ -56,5 +98,12 @@ const styles = StyleSheet.create({
   },
   btnTabActive: {
     backgroundColor: '#E6838D',
+  },
+  textTabActive: {
+    color: '#FFF',
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    paddingVertical: 15,
   },
 });
