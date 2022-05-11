@@ -14,9 +14,6 @@ const listTab = [{status: 'All'}, {status: 'Purple'}, {status: 'Green'}];
 
 const App = () => {
   const [status, setStatus] = useState('All');
-  const setStatusFilter = status => {
-    setStatus(status);
-  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -24,7 +21,7 @@ const App = () => {
         {listTab.map(e => (
           <TouchableOpacity
             style={[styles.btnTab, status === e.status && styles.btnTabActive]}
-            onPress={() => setStatusFilter(e.status)}>
+            onPress={() => setStatus(e.status)}>
             <Text style={styles.textTab}>{e.status}</Text>
           </TouchableOpacity>
         ))}
