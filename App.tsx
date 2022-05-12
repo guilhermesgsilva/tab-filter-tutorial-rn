@@ -10,28 +10,33 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const listTab = [{status: 'All'}, {status: 'Purple'}, {status: 'Green'}];
+const listTab = [{status: 'All'}, {status: 'Dog'}, {status: 'Cat'}];
 
 const data = [
   {
-    name: 'Ronaldo',
-    status: 'Green',
+    name: 'Luna',
+    status: 'Cat',
+    image: 'http://placekitten.com/200/150',
   },
   {
-    name: 'Messi',
-    status: 'Purple',
+    name: 'Buddy',
+    status: 'Dog',
+    image: 'https://place-puppy.com/300x300',
   },
   {
-    name: 'Kaka',
-    status: 'Green',
+    name: 'Milo',
+    status: 'Cat',
+    image: 'http://placekitten.com/200/300',
   },
   {
-    name: 'Mabbpe',
-    status: 'Green',
+    name: 'Oliver',
+    status: 'Cat',
+    image: 'http://placekitten.com/300/300',
   },
   {
-    name: 'Lukaku',
-    status: 'Purple',
+    name: 'Flash',
+    status: 'Dog',
+    image: 'https://place-puppy.com/200x300',
   },
 ];
 
@@ -54,22 +59,22 @@ const App = () => {
         <View style={styles.itemLogo}>
           <Image
             style={styles.itemImage}
-            source={{uri: 'http://placekitten.com/200/300'}}
+            source={{uri: item.image}}
           />
         </View>
         <View style={styles.itemBody}>
           <Text style={styles.itemName}>{item.name}</Text>
         </View>
-        <View style={[styles.itemStatus, {backgroundColor: item.status === 'Purple' ? '#E5848E' : '#69C080'}]}>
+        <View style={[styles.itemStatus, {backgroundColor: item.status === 'Dog' ? '#E5848E' : '#69C080'}]}>
           <Text>{item.status}</Text>
         </View>
       </View>
     );
   };
 
-  const separator = () => {
+  const separator = () => { //Not Working
     return (
-      <View style={{height: 1, backgroundColor: '#F1F1F1'}}></View>
+      <View style={{height: 1, width: '100%', backgroundColor: '#F1F1F1'}} />
     )
   }
 
